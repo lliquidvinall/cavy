@@ -2,19 +2,15 @@ version: 2
 jobs:
   ios:
     macos:
-      xcode: 10.3.0
+      xcode: 11.6.0
 
     steps:
       - checkout
-
       - run:
           name: Install React Native dependencies
           command: |
-            git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
             brew update
             sudo gem install cocoapods -n /usr/local/bin
-            git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
-            
       - run:
           name: Install Node dependencies
           command: |
