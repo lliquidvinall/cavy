@@ -2,15 +2,17 @@ version: 2
 jobs:
   ios:
     macos:
-      xcode: 11.6.0
+      xcode: 10.3.0
 
     steps:
       - checkout
+
       - run:
           name: Install React Native dependencies
           command: |
             brew update
-            sudo gem install cocoapods -n /usr/local/bin
+            brew install watchman cocoapods || exit 0
+            
       - run:
           name: Install Node dependencies
           command: |
@@ -48,6 +50,9 @@ jobs:
           command: |
             cd ~/cavy-tester
             rm -rf $TMPDIR/react-* $TMPDIR/haste-* $TMPDIR/metro-*
+            npm uninstall -g watchman
+            brew update
+            brew install watchman
             watchman watch-del-all
             wml start &
             react-native start --reset-cache &
