@@ -10,6 +10,7 @@ jobs:
       - run:
           name: Install React Native dependencies
           command: |
+            git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
             brew update
             sudo gem install cocoapods -n /usr/local/bin
             
