@@ -11,7 +11,7 @@ jobs:
           name: Install React Native dependencies
           command: |
             brew update
-            brew install watchman cocoapods || exit 0
+            sudo gem install cocoapods -n /usr/local/bin
             
       - run:
           name: Install Node dependencies
